@@ -9,4 +9,7 @@ body {
 .container {
   max-width: 1288px;
   margin: 0 auto;
+  @include respond(1366px) {
+    max-width: 960px;
+  }
 }

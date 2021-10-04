@@ -7,21 +7,19 @@
   background-color: $topics_bg;
   @include respond(1366px) {
     grid-column-gap: 32px;
+    padding: 32px 16px;
+  }
+  @include respond(850px) {
+    grid-template-columns: 1fr;
     padding: 32px 8px;
   }
-  @include respond(1000px) {
-    grid-template-columns: 1fr;
-  }
   &__set {
-    max-width: 360px;
     width: 100%;
 
-    @include respond(1000px) {
+    @include respond(850px) {
       &:not(:first-child) {
         margin-top: 40px;
       }
-
-      max-width: 100%;
     }
   }
   &__set-title {
