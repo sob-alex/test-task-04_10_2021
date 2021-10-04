@@ -1,0 +1,29 @@
+@mixin add_font_style($weight, $size, $lineheight, $color) {
+  color: $color;
+  font: {
+    weight: $weight;
+    size: $size;
+  }
+  line-height: $lineheight;
+}
+@mixin respond-sm {
+  @media (max-width: 768px) {
+    @content;
+  }
+}
+@mixin respond-xs {
+  @media (max-width: 320px) {
+    @content;
+  }
+}
+
+@mixin respond($breakpoint) {
+  @media (max-width: $breakpoint) {
+    @content;
+  }
+}
+@mixin respondV($breakpoint) {
+  @media (max-height: $breakpoint) {
+    @content;
+  }
+}

@@ -20,7 +20,7 @@ module.exports = (env, argv) => {
 
   const config = {
     entry: {
-      main: './src/js/index/main.js',
+      main: './src/main.js',
     },
     output: {
       filename: '[contenthash]-[name].js',
@@ -33,31 +33,15 @@ module.exports = (env, argv) => {
           use: [styleLoader, 'css-loader', 'sass-loader'],
         },
         {
-          test: /\.(png|jpe?g|gif|svg)$/i,
-          use: [
-            {
-              loader: 'file-loader',
-              options: {
-                name: 'assets/[contenthash].[ext]',
-              },
-            },
-          ],
-        },
-        {
-          test: /\.(mp4)$/,
-          use: [
-            {
-              loader: 'file-loader',
-              options: {
-                name: 'assets/[name].[ext]',
-              },
-            },
-          ],
+          test: /\.(png|svg|jpg|jpeg|gif)$/i,
+          type: 'asset/resource',
         },
       ],
     },
     devServer: {
-      contentBase: './dist',
+      static: {
+        directory: path.join(__dirname, 'dist'),
+      },
       liveReload: true,
     },
     plugins: [
@@ -67,7 +51,7 @@ module.exports = (env, argv) => {
         minify: {
           removeRedundantAttributes: false,
         },
-        favicon: './src/assets/images/favicon.png',
+        // favicon: './src/assets/images/favicon.png',
         title: 'Development',
       }),
     ],
